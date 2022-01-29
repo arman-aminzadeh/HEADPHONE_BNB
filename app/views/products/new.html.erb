@@ -1,0 +1,8 @@
+<%= simple_form_for @product do |f| %>
+    <%= f.name :string %>
+    <%= f.description :text %>
+    <%= f.price_per_day :float %>
+    <%= f.address :string %>
+    <%= f.input :photos, as: :file %>
+    <%= f.submit "Submit your product", class: "btn btn-primary" %>
+<% end %>
