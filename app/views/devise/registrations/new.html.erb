@@ -9,18 +9,18 @@
           <%= f.input :name,
                       required:   true,
                       autofocus:  true,
-                      input_html: { autocomplete: "name" } %>
+                      input_html: { autocomplete: "name" ,  class: "mb-2"  } %>
           <%= f.input :email,
                       required:   true,
                       autofocus:  true,
-                      input_html: { autocomplete: "email" } %>
+                      input_html: { autocomplete: "email" ,  class: "mb-2" } %>
           <%= f.input :password,
                       required:   true,
                       hint:       ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
+                      input_html: { autocomplete: "new-password" ,  class: "mb-2"  } %>
           <%= f.input :password_confirmation,
                       required:   true,
-                      input_html: { autocomplete: "new-password" } %>
+                      input_html: { autocomplete: "new-password",  class: "mb-3"  } %>
         </div>
 
         <div class="form-actions">
