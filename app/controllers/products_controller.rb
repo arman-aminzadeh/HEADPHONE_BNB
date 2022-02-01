@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = policy_scope(Product).order(created_at: :desc)
   end
 
   def show
@@ -9,10 +9,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(strong_params)
+    authorize @product
     @product.user = current_user
     @product.save
     redirect_to product_path(@product)
