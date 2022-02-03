@@ -10,6 +10,11 @@ class ProductPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def show?
+    true
+  end
+
   def update?
     record.user == user
     # - record: the product passed to the `authorize` method in controller
