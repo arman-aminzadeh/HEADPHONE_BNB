@@ -11,12 +11,12 @@ class ProductPolicy < ApplicationPolicy
     return true
   end
   def update?
-    record.user == user
+    record.user_id == user.id
     # - record: the product passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
   end
 
   def destroy?
-    record.user == user
+    record.user_id == user.id
   end
 end

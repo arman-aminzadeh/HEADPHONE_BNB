@@ -12,12 +12,16 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    authorize @product
+    @product.save
+  end
+
   def create
     @product = Product.new(strong_params)
     authorize @product
-    @product.user = current_user
-    @product.save
-    redirect_to product_path(@product)
+    @product.user_id = current_user
   end
 
   private
