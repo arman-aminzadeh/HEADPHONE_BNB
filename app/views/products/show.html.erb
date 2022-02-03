@@ -9,11 +9,15 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">$ <%= @product.price_per_day %></li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">Booking</li>
+          <li class="list-group-item">Calendar??</li>
         </ul>
-          <a href="<% link_to product_path %>" class="btn btn-secondary">Edit</a>
-          <a href="#" class="btn btn-danger">Delete</a>
+          <%= link_to "Edit", edit_product_path(@product), class: "btn btn-secondary" %>
+          <%= link_to "Delete",
+            product_path(@product),
+            class: "btn btn-danger",
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
       </div>
     </div>
   </div>
