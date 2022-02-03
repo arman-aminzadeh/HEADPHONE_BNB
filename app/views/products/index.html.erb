@@ -7,6 +7,10 @@
 </div>
 
 <% @products.each do |product| %>
+    <%= product.name %>
+<<% end %>>
+
+<% @products.each do |product| %>
     <div class="container row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-primary"><%= product.name %></strong>
