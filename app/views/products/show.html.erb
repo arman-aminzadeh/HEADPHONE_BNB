@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row align-items-center">
+   <div class="col justify-content-center">
+      <div class="card" style="width: 32rem;">
+        <img src="<%= @product.picture_url %>"  class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= @product.name %></h5>
+          <p class="card-text"><%= @product.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">$ <%= @product.price_per_day %></li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+          <a href="<% link_to product_path %>" class="btn btn-secondary">Edit</a>
+          <a href="#" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
