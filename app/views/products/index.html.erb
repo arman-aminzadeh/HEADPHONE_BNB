@@ -6,21 +6,27 @@
     </div>
 </div>
 
-<% @products.each do |product| %>
-    <%= product.name %>
-<<% end %>>
-
-<% @products.each do |product| %>
-    <div class="container row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary"><%= product.name %></strong>
-            <div class="mb-1 text-muted"><%= product.price_per_day %></div>
-            <p class="card-text mb-auto"><%= product.description %></p>
-            <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <% @products.each do |product| %>
+                    <div class="col mb-3">
+                        <div class="card shadow-sm">
+                            <div class="col-auto d-none d-lg-block">
+                                <img src = "<%= product.picture_url %>" class="bd-placeholder-img" width="200" height="250">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <%= link_to "details", products_path(product), class:"btn btn-sm btn-outline-secondary" %>
+                                    </div>
+                                    <small class="text-muted"><strong><p>price per day</p><%= product.price_per_day %></strong></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
-<% end %>
