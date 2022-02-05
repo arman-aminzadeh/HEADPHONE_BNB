@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.user = current_user
     authorize @product
   end
 
