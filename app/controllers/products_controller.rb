@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    authorize @product
   end
 
   def new
@@ -20,6 +21,17 @@ class ProductsController < ApplicationController
     @product.save
     redirect_to product_path(@product)
   end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(strong_params)
+    redirect_to product_path(@product)
+  end
+
 
   private
 
