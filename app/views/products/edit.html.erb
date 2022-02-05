@@ -1,7 +1,7 @@
 <div id="formContent" class="container">
   <div class="wrapper fadeInDown">
     <div class="form-inputs">
-      <%= simple_form_for [ @user, @product ] do |f| %>
+      <%= simple_form_for [ @user, @product ]  do |f| %>
         <%= f.input :name, input_html: { class: "m-2" } %>
         <%= f.input :description, input_html: { class: "mb-3" } %>
         <%= f.input :price_per_day, input_html: { class: "mb-3" } %>
