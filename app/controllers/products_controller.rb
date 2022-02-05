@@ -4,12 +4,6 @@ class ProductsController < ApplicationController
     @products = policy_scope(Product).order(created_at: :desc)
   end
 
-  def show
-    @product = Product.find(params[:id])
-    authorize @product
-    @booking = Booking.new
-  end
-
   def new
     @product = Product.new
     authorize @product
@@ -23,7 +17,13 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-        authorize @product
+    authorize @product
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @booking = Booking.new
+    authorize @product
   end
 
   def edit
