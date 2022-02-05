@@ -9,9 +9,13 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">$ <%= @product.price_per_day %></li>
-          <li class="list-group-item">Booking</li>
-          <li class="list-group-item">Calendar??</li>
         </ul>
+            <div class="form-actions">
+            <%= simple_form_for([ @product, @booking ]) do |f| %>
+            <%= f.input :start_date, input_html: { class: "m-2" } %>
+            <%= f.input :end_date, input_html: { class: "m-2" } %>
+            <%= f.submit "Submit your product", class: "btn btn-warning my-3" %>
+          <% end %>
           <%= link_to "Edit", edit_product_path(@product), class: "btn btn-secondary" %>
           <%= link_to "Delete",
             product_path(@product),
