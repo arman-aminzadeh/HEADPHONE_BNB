@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-      authorize @product
+        authorize @product
   end
 
   def edit
