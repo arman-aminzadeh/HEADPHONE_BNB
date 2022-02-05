@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   root to: 'pages#home'
   resources :users do
-    resources :products, only: [ :create, :new, :destroy ]
+    resources :products, only: [ :create, :new ]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @products = policy_scope(Product).order(created_at: :desc)
   end
@@ -16,9 +17,25 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(strong_params)
-    authorize @product
     @product.user = current_user
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render :new
+    end
+        authorize @product
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+    authorize @product
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(strong_params)
     @product.save
+    authorize @product
     redirect_to product_path(@product)
   end
 
