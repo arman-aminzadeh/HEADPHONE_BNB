@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  has_many :bookings, foreign_key: "reference_id"
   def index
     @products = policy_scope(Product).order(created_at: :desc)
   end
