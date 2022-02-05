@@ -9,7 +9,11 @@
     </div>
     <div class="row">
       <div class="col text-center">
-        <a class="btn btn-light" href="/users/sign_up">Sign up</a>
+        <% if user_signed_in? %>
+          <a class="btn btn-light" href="/products">Go to Index</a>
+        <% else %>
+          <a class="btn btn-light" href="/users/sign_up">Sign up</a>
+        <% end %>
       </div>
     </div>
   </div>
