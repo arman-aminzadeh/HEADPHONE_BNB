@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
   def index
     @products = policy_scope(Product).order(created_at: :desc)
   end
@@ -22,7 +23,7 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-      authorize @product
+        authorize @product
   end
 
   def edit
