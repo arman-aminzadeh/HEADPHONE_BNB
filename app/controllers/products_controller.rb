@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
     @product.delete
 
     authorize @product
-    redirect_to product_path(@product)
+    redirect_to products_path
   end
 
   private
