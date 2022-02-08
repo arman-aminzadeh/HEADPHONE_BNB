@@ -1,7 +1,14 @@
 class ProductsController < ApplicationController
-  
+
   def index
     @products = policy_scope(Product).order(created_at: :desc)
+    @markers  = @products.geocoded.map do |product|
+      {
+        lat:         product.latitude,
+        lng:         product.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { product: product })
+      }
+    end
   end
 
   def show
@@ -11,23 +18,23 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @user = current_user
+    @user    = current_user
     authorize @product
   end
 
   def create
-    @product = Product.new(strong_params)
+    @product      = Product.new(strong_params)
     @product.user = current_user
     if @product.save
       redirect_to product_path(@product)
     else
       render :new
     end
-        authorize @product
+    authorize @product
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product      = Product.find(params[:id])
     @product.user = current_user
     authorize @product
   end
@@ -40,17 +47,16 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
+    @product      = Product.find(params[:id])
     @product.user = current_user
     @product.delete
     authorize @product
     redirect_to products_path
   end
 
-
   private
 
   def strong_params
-    params.require(:product).permit(:name, :description, :address, :price_per_day)
+    params.require(:product).permit(:name, :description, :address, :price_per_day, :latitude, :longitude)
   end
 end
