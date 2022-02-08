@@ -1,32 +1,38 @@
 <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">All Products</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-    </div>
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 fst-italic">All Products</h1>
+    <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about
+      what’s most interesting in this post’s contents.</p>
+    <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+  </div>
 </div>
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <% @products.each do |product| %>
-                    <div class="col mb-3">
-                        <div class="card shadow-sm">
-                            <div class="col-auto d-none d-lg-block">
-                                <img src = "<%= product.picture_url %>" class="bd-placeholder-img" width="200" height="250">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <%= link_to "details", product_path(product), class:"btn btn-sm btn-outline-secondary" %>
-                                    </div>
-                                    <small class="text-muted"><strong><p>price per day</p><%= product.price_per_day %></strong></small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
+<div class="album py-5 bg-light shadow-lg rounded">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% @products.each do |product| %>
+        <div class="col mb-3">
+          <div class="card shadow-sm">
+            <div class="col-auto d-none d-lg-block">
+              <img src="<%= product.picture_url %>" class="card-img-top">
             </div>
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+            </div>
+
+            <div class="card-footer d-flex justify-content-between align-items-center ">
+              <div class="btn-group">
+                <%= link_to "details", product_path(product), class: "btn btn-outline-secondary" %>
+              </div>
+              <div>
+                <div class="text-muted"><strong><%= product.price_per_day %> €</strong></div>
+
+              </div>
+            </div>
+          </div>
         </div>
+      <% end %>
     </div>
+  </div>
+</div>
