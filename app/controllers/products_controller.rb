@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+
   def index
     @products = policy_scope(Product).order(created_at: :desc)
   end
@@ -51,6 +51,6 @@ class ProductsController < ApplicationController
   private
 
   def strong_params
-    params.require(:product).permit(:name, :description, :address, :price_per_day)
+    params.require(:product).permit(:name, :description, :address, :price_per_day, :photo)
   end
 end
