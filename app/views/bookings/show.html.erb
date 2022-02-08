@@ -1,0 +1,16 @@
+<div class = "container">
+
+    <h1>your booking detail</h1>
+    <p>
+       <p><strong> Product Nmae</strong></p> <%= @booking.product.name %>
+    </p>
+    <hr>
+    <p>
+        <p><strong> Product Address</strong></p><%= @booking.product.address %>
+    </p>
+    <hr>
+    <p>
+        <p><strong> Total Price</strong></p> <%= @booking.total_price %>
+    </p>
+    <%= link_to "back to main page", products_path %>
+</div>
