@@ -22,7 +22,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+<<<<<<< HEAD
     @booking = Booking.new
+=======
+    @product.user = current_user
+>>>>>>> 10680ac92258b3eb7208c8a4f5158121e6be0f0c
     authorize @product
   end
 

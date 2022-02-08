@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
   <div class="row align-items-center">
    <div class="col justify-content-center">
       <div class="card" style="width: 32rem;">
@@ -22,6 +23,25 @@
             class: "btn btn-danger",
             method: :delete,
             data: { confirm: "Are you sure?" } %>
+=======
+  <div class="card text-center m-5 shadow-lg rounded">
+    <div class="card-body ">
+      <img src="<%= @product.picture_url %>" class="img-fluid">
+      <h3 class="card-title"><%= @product.name %></h3>
+      <p class="card-text"><%= @product.description %></p>
+      <h4><%= @product.price_per_day %> €</h4>
+      <div class="d-grid gap-2">
+        <%= link_to "Book", product_path, class: "btn btn-secondary" %></div>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-end">
+      <div class="btn-group">
+        <%= link_to "Edit", edit_product_path(@product), class: "btn btn-outline-secondary mx-3" %>
+        <%= link_to "Delete",
+                    product_path(@product),
+                    class:  "btn btn-outline-warning",
+                    method: :delete,
+                    data:   { confirm: "Are you sure?" } %>
+>>>>>>> 10680ac92258b3eb7208c8a4f5158121e6be0f0c
       </div>
     </div>
   </div>
