@@ -5,7 +5,15 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 
 </div>
-
+<div><%= form_tag products_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find Headphones"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+</div>
 <div class="album py-5 bg-light shadow-lg rounded">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

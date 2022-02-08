@@ -2,6 +2,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product).order(created_at: :desc)
+
+    if params[:query].present?
+      sql_query = "name @@ :query OR address @@ :query"
+      @products = Product.where(sql_query, query: "%#{params[:query]}%")
+    end
+
     @markers  = @products.geocoded.map do |product|
       {
         lat:         product.latitude,
@@ -14,11 +20,14 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     authorize @product
+    @booking = Booking.new
   end
 
   def new
     @product = Product.new
+
     @user    = current_user
+
     authorize @product
   end
 
@@ -39,19 +48,20 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
+
   def update
     @product = Product.find(params[:id])
     @product.update(strong_params)
-    authorize @product
-    redirect_to product_path(@product)
-  end
+    @product.save
 
+  end
   def destroy
     @product      = Product.find(params[:id])
     @product.user = current_user
     @product.delete
+
     authorize @product
-    redirect_to products_path
+    redirect_to product_path(@product)
   end
 
   private
