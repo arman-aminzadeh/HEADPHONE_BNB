@@ -13,7 +13,7 @@
         <div class="col mb-3">
           <div class="card shadow-sm">
             <div class="col-auto d-none d-lg-block">
-              <img src="<%= product.picture_url %>" class="card-img-top">
+              <%= cl_image_tag(product.picture_url, :class => "card-img-top") %>
             </div>
             <div class="card-body">
               <h3 class="card-title"><%= product.name %></h3>
@@ -36,3 +36,5 @@
     </div>
   </div>
 </div>
+
+              <%# <% <img src="<%= product.picture_url" class="card-img-top"> %>

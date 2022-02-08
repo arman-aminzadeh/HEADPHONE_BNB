@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card text-center m-5 shadow-lg rounded">
     <div class="card-body ">
-      <img src="<%= @product.picture_url %>" class="img-fluid">
+      <%= cl_image_tag(@product.picture_url, :class => "img-fluid") %>
       <h3 class="card-title"><%= @product.name %></h3>
       <p class="card-text"><%= @product.description %></p>
       <h4><%= @product.price_per_day %> €</h4>
