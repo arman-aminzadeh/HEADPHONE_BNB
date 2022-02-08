@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = "name @@ :query OR address @@ :query"
+      @products = Product.where(sql_query, query: "%#{params[:query]}%")
+    end
   end
 
   def new
@@ -22,11 +26,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-<<<<<<< HEAD
     @booking = Booking.new
-=======
     @product.user = current_user
->>>>>>> 10680ac92258b3eb7208c8a4f5158121e6be0f0c
     authorize @product
   end
 
