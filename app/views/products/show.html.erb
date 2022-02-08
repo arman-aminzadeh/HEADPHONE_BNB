@@ -9,7 +9,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">$ <%= @product.price_per_day %></li>
-          <li class="list-group-item">booking</li>
+          <li class="list-group-item"><%= link_to "Book Now", new_booking_path %></li>
           <li class="list-group-item">Calendar??</li>
         </ul>
           <%= link_to "Edit", edit_product_path(@product), class: "btn btn-secondary" %>

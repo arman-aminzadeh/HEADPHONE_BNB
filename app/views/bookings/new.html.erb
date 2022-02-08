@@ -1,1 +1,16 @@
+
+<div id="formContent" class="container">
 <h1>booking table</h1>
+  <div class="wrapper fadeInDown">
+    <div class="form-inputs">
+      <%= simple_form_for @booking do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.input :total_price %>
+        <div class="form-actions">
+          <%= f.submit "Book Now", class: "btn btn-warning my-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
