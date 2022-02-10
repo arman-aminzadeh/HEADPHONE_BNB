@@ -40,10 +40,8 @@ Product.destroy_all
     price_per_day: rand(1..10).to_f,
     latitude:      Faker::Address.latitude,
     longitude:     Faker::Address.longitude,
-    
     user_id:       1
   )
 end
 
 puts "Seeded!"
-
