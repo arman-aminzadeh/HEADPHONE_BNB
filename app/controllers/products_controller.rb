@@ -3,10 +3,10 @@ class ProductsController < ApplicationController
   def index
     @products = policy_scope(Product).order(created_at: :desc)
 
-    if params[:query].present?
-      @products = Product.search_by_name_and_descripition(params[:query])
-      # sql_query = "name @@ :query OR address @@ :query OR description @@ :query"
-      # @products = Product.where(sql_query, query: "%#{params[:query]}%")
+    if params[:query]
+      @products = Product.search_by_name_and_description(params[:query])
+    else
+      @product = Product.all
     end
 
     @markers = @products.geocoded.map do |product|
