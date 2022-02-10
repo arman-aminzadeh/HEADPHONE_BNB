@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   resources :products, only: [ :index, :show ] do
     resources :bookings, only: [ :create, :new ]
   end
-  
+
   resources :bookings, only: [ :destroy, :show ]
   resources :users do
     resources :products, only: [ :create, :new, :edit, :destroy, :update]
   end
-  
 end
