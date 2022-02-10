@@ -4,14 +4,15 @@ class ProductsController < ApplicationController
     @products = policy_scope(Product).order(created_at: :desc)
 
     if params[:query].present?
-      sql_query = "name @@ :query OR address @@ :query"
-      @products = Product.where(sql_query, query: "%#{params[:query]}%")
+      @products = Product.search_by_name_and_descripition(params[:query])
+      # sql_query = "name @@ :query OR address @@ :query OR description @@ :query"
+      # @products = Product.where(sql_query, query: "%#{params[:query]}%")
     end
 
-    @markers  = @products.geocoded.map do |product|
+    @markers = @products.geocoded.map do |product|
       {
-        lat:         product.latitude,
-        lng:         product.longitude,
+        lat: product.latitude,
+        lng: product.longitude,
         info_window: render_to_string(partial: "info_window", locals: { product: product })
       }
     end
@@ -25,9 +26,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-
     @user    = current_user
-
     authorize @product
   end
 
