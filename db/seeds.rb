@@ -22,7 +22,7 @@ require "faker"
     stockholm_plus_l2t5d9
     athens_auanme
     seoul_upxhcs
-    berlin_iyowt
+    berlin_iyowtn
     madrid_osdre7
     miami_crystal_edition_en7fwn
     boston_iuvtzv
