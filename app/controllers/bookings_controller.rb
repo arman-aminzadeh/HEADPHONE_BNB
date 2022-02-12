@@ -28,7 +28,8 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
-    @booking.send("#{params[:status]}!")
+    @booking.status = params[:status]
+    @booking.save
     redirect_to dashboard_path
   end
 
