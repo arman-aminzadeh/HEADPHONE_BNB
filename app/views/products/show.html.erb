@@ -1,4 +1,42 @@
 <div class="container">
+  <div class="row mt-4">
+    
+    <div class=" col-8 card text-center shadow-lg rounded">
+      <div class="card-body ">
+        <%= cl_image_tag(@product.picture_url, :class => "img-fluid") %>
+        <h3 class="card-title"><%= @product.name %></h3>
+        <p class="card-text"><%= @product.description %></p>
+        <h4><%= @product.price_per_day %> €/per day</h4>
+        <div class="d-grid gap-2">
+          <%= link_to "Book",  new_product_booking_path(@product), class: "btn btn-secondary" %>
+        </div>
+      </div>
+      <div class="card-footer text-muted d-flex justify-content-end">
+        <div class="btn-group">
+          <%= link_to "Edit", edit_user_product_path(@product), class: "btn btn-outline-secondary mx-3" %>
+          <%= link_to "Delete",
+                      user_product_path(@product),
+                      class:  "btn btn-outline-warning",
+                      method: :delete,
+                      data:   { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </div>
+    <div class = "col-4 card shadow-lg rounded" data-controller="insert-in-list">
+      <div class = "card-body">
+        <div class = "h4"><strong> Reviews </strong> </div>
+        <hr>
+        <div id="reviews" data-insert-in-list-target = "items" >
+          <% if @product.reviews.blank? %>
+            Be the first to leave a review for <%= @product.name %>
+          <% else %>
+            <% @product.reviews.each do |review| %>
+              <%= render 'review', review: review  %>
+              <hr>
+            <% end %>
+          <% end %>
+        </div>
+        <%= render 'reviews/form', restaurant: @restaurant, review: @review %>   
   <div class="card text-center m-5 shadow-lg rounded">
     <div class="card-body ">
       <%= cl_image_tag(@product.picture_url, :class => "img-fluid") %>
@@ -19,5 +57,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>
