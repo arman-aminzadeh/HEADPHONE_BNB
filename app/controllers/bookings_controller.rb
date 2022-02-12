@@ -1,49 +1,40 @@
 class BookingsController < ApplicationController
-def create
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
 
-end
-    def show
-        @booking = Booking.find(params[:id])
-        authorize @booking
-    end
-    def new
-        @booking = Booking.new
-        @product = Product.find(params[:product_id]) 
-        authorize @booking
-    end
-    
-    def create
-        #raise
-        @booking = Booking.new(booking_params)
-        @product = Product.find(params[:product_id])
-        @user = current_user
-        @booking.product = @product
-        @booking.user = @user
-        start_date = DateTime.parse(params[:booking][:start_date]).to_date
-        end_date = DateTime.parse(params[:booking][:end_date]).to_date
+  def new
+    @booking = Booking.new
+    @product = Product.find(params[:product_id])
+    authorize @booking
+  end
 
-        diuration = end_date.jd - start_date.jd + 1
-        @booking.total_price = @product.price_per_day * diuration
-        authorize @booking
-        if @booking.save
-            redirect_to @booking
-        else
-            render :new
-        end
-        
+  def create
+    @booking = Booking.new(booking_params)
+    @product = Product.find(params[:product_id])
+    @user = current_user
+    @booking.product = @product
+    @booking.user = @user
+    authorize @booking
+    if @booking.save
+      redirect_to @booking
+    else
+      render :new
     end
-    
-    def update
+  end
 
-    end
-    
-    def destroy
-        
-    end
+  def update
+  end
 
-    private
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+  end
 
-    def booking_params
-        params.require(:booking).permit(:start_date, :end_date)
-    end
+  private
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
+  end
 end
