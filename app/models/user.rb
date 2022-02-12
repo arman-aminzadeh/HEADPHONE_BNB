@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :products
   has_many :bookings
   has_many :reviews
+  has_many :received_bookings, through: :products, source: :bookings
 end

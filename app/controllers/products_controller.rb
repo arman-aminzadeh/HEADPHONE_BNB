@@ -44,17 +44,22 @@ class ProductsController < ApplicationController
 
   def edit
     @product      = Product.find(params[:id])
-    @product.user = current_user
+    # @product.user = current_user
     authorize @product
   end
 
-
   def update
     @product = Product.find(params[:id])
-    @product.update(strong_params)
-    @product.save
-
+    authorize @product
+    # @product.update(strong_params)
+    # @product.save
+    if @product.update(strong_params)
+      redirect_to @product
+    else
+      render :edit
+    end
   end
+
   def destroy
     @product      = Product.find(params[:id])
     @product.user = current_user
