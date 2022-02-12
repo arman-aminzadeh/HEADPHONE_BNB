@@ -38,7 +38,7 @@ const initMapbox = () => {
             });
         };
         markers.forEach((marker) => {
-            const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+          const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(marker.info_window);
 
             // Create a HTML element for your custom marker
             const element = document.createElement('div');
