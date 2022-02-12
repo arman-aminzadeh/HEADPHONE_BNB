@@ -15,31 +15,64 @@ require "faker"
 #              ]
 # DONT DELETE
 
- pictures = %w[
-    black_los_angeles_otdtvm
-    new_york_tccs5o
-    miami_sirijp
-    stockholm_plus_l2t5d9
-    athens_auanme
-    seoul_upxhcs
-    berlin_iyowtn
-    madrid_osdre7
-    miami_crystal_edition_en7fwn
-    boston_iuvtzv
- ]
-puts "Start Seeding"
+names = [
+  "Black Los Angeles",
+  "New York",
+  "Miami",
+  "Stockholm Plus",
+  "Athens",
+  "Seoul",
+  "Berlin",
+  "Madrid",
+  "Miami Crystal Edition",
+  "Boston"
+]
 
+pictures = %w[
+  black_los_angeles_otdtvm
+  new_york_tccs5o
+  miami_sirijp
+  stockholm_plus_l2t5d9
+  athens_auanme
+  seoul_upxhcs
+  berlin_iyowtn
+  madrid_osdre7
+  miami_crystal_edition_en7fwn
+  boston_iuvtzv
+]
+
+addresses = [
+  "Cl. de Ayala, 21, 28001 Madrid",
+  "C. de Sánchez Barcáiztegui, 28007 Madrid",
+  "C. Pedro Campos, 22, 28019 Madrid",
+  "C. Alora, 22, 28018 Madrid",
+  "C. Lucano, 8, 28022 Madrid",
+  "Rda. Abubilla, 26, 28043 Madrid",
+  "C. Calanda, 3, 28043 Madrid",
+  "C. Artesa de Segre, 5, 28035 Madrid",
+  "C. Fondón, 1, 2º D, 28033 Madrid",
+  "C. Edison, 18, 28906 Getafe, Madrid"
+]
+puts "Clearing database"
+# Review.destroy_all
+# Booking.destroy_all
 Product.destroy_all
+# User.destroy_all
+puts "Database cleared"
+
+puts "Seeding"
+sleep 1
+puts "Creating products"
 
 10.times do |i|
   Product.create!(
-    name:          Faker::Company.name,
+    name:          names[i],
     picture_url:   pictures[i],
-    address:       Faker::Address.full_address,
-    description:   Faker::Lorem.paragraph,
+    address:       addresses[i],
+    description:   Faker::Quote.famous_last_words,
     price_per_day: rand(1..10).to_f,
-    latitude:      Faker::Address.latitude,
-    longitude:     Faker::Address.longitude,
+    # latitude:      Faker::Address.latitude,
+    # longitude:     Faker::Address.longitude,
     user_id:       1
   )
 end
