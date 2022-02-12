@@ -1,0 +1,8 @@
+<div class="container">
+  <%@received_bookings.each do |rb|%>
+    <%= rb.product.name %>
+    <%= rb.product.address %>
+    <%= rb.start_date %>
+    <%= rb.end_date %>
+  <% end %>
+</div>

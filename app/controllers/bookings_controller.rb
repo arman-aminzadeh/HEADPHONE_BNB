@@ -25,6 +25,8 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def destroy

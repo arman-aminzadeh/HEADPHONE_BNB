@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :products, only: [ :create, :new, :edit, :destroy, :update]
   end
+  resource :dashboard, only: [:show]
 end
