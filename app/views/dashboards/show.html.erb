@@ -1,18 +1,17 @@
 <div class="container">
-  <%@received_bookings.each do |rb|%>
-    <%= rb.product.name %>
-    <%= rb.product.address %>
-    <%= rb.start_date %>
-    <%= rb.end_date %>
+  <% @received_bookings.each do |rb| %>
+  <div class="booking-card">
+    <p><%= rb.product.name %>, <%= rb.product.address %>, <%= rb.start_date %> - <%= rb.end_date %></p>
     <% if rb.status == "pending" %>
       <% if policy(rb).update? %>
-        <%= link_to "accept", booking_path(rb, {status: "accepted"}), method: :patch, class: "update-button"%>
-        <%= link_to "reject", booking_path(rb, {status: "rejected"}), method: :patch, class: "update-button"%>
+        <%= link_to "accept", booking_path(rb, {status: "accepted"}), method: :patch, class: "accept-update-button"%>
+        <%= link_to "reject", booking_path(rb, {status: "rejected"}), method: :patch, class: "reject-update-button"%>
       <% end %>
       <% elsif rb.status == "accepted"%>
-        <p> It's been accepted already </p>
+        <div class="already_accepted"><p> It's been accepted already </p></div>
       <% else %>
-        <p> It's been rejected </p>
+        <div class="already_rejected"><p> It's been rejected </p></div>
       <% end %>
+    </div>
   <% end %>
 </div>
