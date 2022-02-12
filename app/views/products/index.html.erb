@@ -20,8 +20,8 @@
                     <%= cl_image_tag(product.picture_url, :class => "card-img-top", :width => 100) %>
                   </div>
                   <div class="card-body">
-                    <h3 class="card-title"><%= product.name %></h3>
-                    <p class="card-text"><%= product.description %></p>
+                    <h3 class="card-title text-center"><%= product.name %></h3>
+                    <%# <p class="card-text"><%= product.description</p> %>
                   </div>
 
 
@@ -30,7 +30,7 @@
                       <%= link_to "details", product_path(product), class: "btn btn-outline-secondary" %>
                     </div>
                     <div>
-                      <div class="text-muted"><strong><%= product.price_per_day %> €</strong></div>
+                      <div class="text-muted"><strong><%= product.price_per_day %> € / per day</strong></div>
 
                     </div>
                   </div>
