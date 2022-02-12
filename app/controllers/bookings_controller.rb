@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @user = current_user
     @booking.product = @product
     @booking.user = @user
+    @booking.status = "pending"
     authorize @booking
     if @booking.save
       redirect_to @booking
@@ -27,6 +28,9 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to dashboard_path
   end
 
   def destroy

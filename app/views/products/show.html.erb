@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-4">
-    
+
     <div class=" col-8 card text-center shadow-lg rounded">
       <div class="card-body ">
         <%= cl_image_tag(@product.picture_url, :class => "img-fluid") %>
@@ -36,7 +36,7 @@
             <% end %>
           <% end %>
         </div>
-        <%= render 'reviews/form', restaurant: @restaurant, review: @review %>   
-     </div>
+        <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+      </div>
   </div>
 </div>
